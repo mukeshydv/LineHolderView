@@ -72,6 +72,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 						path.move(to: startPoint)
 						path.addLine(to: endPoint)
 						path.stroke()
+						if let points = holderView.getArrowHeadPoints() {
+							UIColor.red.setFill()
+							let trianglePath = UIBezierPath()
+							trianglePath.move(to: endPoint)
+							trianglePath.addLine(to: points.point1)
+							trianglePath.addLine(to: points.point2)
+							trianglePath.close()
+							trianglePath.fill()
+						}
 						result = UIGraphicsGetImageFromCurrentImageContext()
 						UIGraphicsEndImageContext()
 					}
