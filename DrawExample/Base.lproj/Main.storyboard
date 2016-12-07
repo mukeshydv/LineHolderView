@@ -77,7 +77,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nm-Ad-xVN">
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Export Images"/>
                                 <connections>
                                     <action selector="clickedButtonExportImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slk-gb-6Vg"/>
                                 </connections>

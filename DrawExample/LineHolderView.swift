@@ -37,7 +37,7 @@ class LineHolderView: UIView {
 			if let points = getArrowHeadPoints() {
 				UIColor.red.setFill()
 				let trianglePath = UIBezierPath()
-				trianglePath.move(to: end)
+				trianglePath.move(to: points.point3)
 				trianglePath.addLine(to: points.point1)
 				trianglePath.addLine(to: points.point2)
 				trianglePath.close()
@@ -70,11 +70,18 @@ class LineHolderView: UIView {
 		}
 	}
 
-	func getArrowHeadPoints() -> (point1: CGPoint, point2: CGPoint)? {
+	func getArrowHeadPoints(aspectWidth: CGFloat = 1, aspectHeight: CGFloat = 1) -> (point1: CGPoint, point2: CGPoint, point3: CGPoint)? {
 		
-		var points: (CGPoint, CGPoint)? = nil
+		var points: (CGPoint, CGPoint, CGPoint)? = nil
 		
-		if let start = startPoint, let end = endPoint {
+		if var start = startPoint, var end = endPoint {
+			
+			start.x = start.x * aspectWidth
+			start.y = start.y * aspectHeight
+			
+			end.x = end.x * aspectWidth
+			end.y = end.y * aspectHeight
+			
 			let dx = end.x - start.x
 			let dy = end.y - start.y
 			
@@ -97,8 +104,9 @@ class LineHolderView: UIView {
 			
 			let point1 = CGPoint(x: ax0, y: ay0)
 			let point2 = CGPoint(x: ax1, y: ay1)
+			let point3 = CGPoint(x: end.x + 3 * udx, y: end.y + 3 * udy)
 			
-			points = (point1, point2)
+			points = (point1, point2, point3)
 		}
 		
 		return points
