@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,9 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-2g-Pcb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="609"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-bb-tCX"/>
+                                    <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-bb-tCX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
+                                    </imageView>
                                     <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLi-LG-RTr" customClass="LineHolderView" customModule="DrawExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -38,101 +44,30 @@
                                     <constraint firstItem="bLi-LG-RTr" firstAttribute="leading" secondItem="5eV-2g-Pcb" secondAttribute="leading" id="xEl-IE-WUS"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fE4-50-VhE">
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-jy-jA2"/>
-                                    <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvt-QW-EXH" customClass="LineHolderView" customModule="DrawExample" customModuleProvider="target">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="z8g-jy-jA2" firstAttribute="top" secondItem="fE4-50-VhE" secondAttribute="top" id="Bet-je-g5H"/>
-                                    <constraint firstItem="Pvt-QW-EXH" firstAttribute="leading" secondItem="fE4-50-VhE" secondAttribute="leading" id="GJA-7a-DwR"/>
-                                    <constraint firstAttribute="bottom" secondItem="Pvt-QW-EXH" secondAttribute="bottom" id="Hqg-wA-31O"/>
-                                    <constraint firstAttribute="trailing" secondItem="z8g-jy-jA2" secondAttribute="trailing" id="MVR-sx-dIE"/>
-                                    <constraint firstItem="Pvt-QW-EXH" firstAttribute="top" secondItem="fE4-50-VhE" secondAttribute="top" id="aHg-kd-fOg"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pvt-QW-EXH" secondAttribute="trailing" id="fb4-TQ-e6v"/>
-                                    <constraint firstItem="z8g-jy-jA2" firstAttribute="leading" secondItem="fE4-50-VhE" secondAttribute="leading" id="nv7-zN-Jev"/>
-                                    <constraint firstAttribute="bottom" secondItem="z8g-jy-jA2" secondAttribute="bottom" id="zw0-Pj-u63"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOh-5h-HhI">
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cyS-nt-kwT"/>
-                                    <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDd-Ah-ZNZ" customClass="LineHolderView" customModule="DrawExample" customModuleProvider="target">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="PDd-Ah-ZNZ" secondAttribute="bottom" id="1W9-0R-oIk"/>
-                                    <constraint firstAttribute="trailing" secondItem="cyS-nt-kwT" secondAttribute="trailing" id="C4S-J1-1lv"/>
-                                    <constraint firstAttribute="trailing" secondItem="PDd-Ah-ZNZ" secondAttribute="trailing" id="DzK-D8-q5D"/>
-                                    <constraint firstItem="cyS-nt-kwT" firstAttribute="top" secondItem="FOh-5h-HhI" secondAttribute="top" id="JvY-AX-fIK"/>
-                                    <constraint firstItem="cyS-nt-kwT" firstAttribute="leading" secondItem="FOh-5h-HhI" secondAttribute="leading" id="LT4-wq-EB4"/>
-                                    <constraint firstItem="PDd-Ah-ZNZ" firstAttribute="top" secondItem="FOh-5h-HhI" secondAttribute="top" id="cbf-ef-H49"/>
-                                    <constraint firstAttribute="bottom" secondItem="cyS-nt-kwT" secondAttribute="bottom" id="qoJ-SB-nl9"/>
-                                    <constraint firstItem="PDd-Ah-ZNZ" firstAttribute="leading" secondItem="FOh-5h-HhI" secondAttribute="leading" id="sOJ-wo-QhE"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nm-Ad-xVN">
+                                <rect key="frame" x="138" y="637" width="99" height="30"/>
                                 <state key="normal" title="Export Images"/>
                                 <connections>
                                     <action selector="clickedButtonExportImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slk-gb-6Vg"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AP-hZ-n0E">
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BF9-zm-As5"/>
-                                    <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-pT-ciK" customClass="LineHolderView" customModule="DrawExample" customModuleProvider="target">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="BF9-zm-As5" secondAttribute="bottom" id="6i6-64-bxu"/>
-                                    <constraint firstItem="Q1L-pT-ciK" firstAttribute="top" secondItem="4AP-hZ-n0E" secondAttribute="top" id="O2N-lU-4UW"/>
-                                    <constraint firstItem="BF9-zm-As5" firstAttribute="top" secondItem="4AP-hZ-n0E" secondAttribute="top" id="XNJ-yk-hpM"/>
-                                    <constraint firstItem="Q1L-pT-ciK" firstAttribute="leading" secondItem="4AP-hZ-n0E" secondAttribute="leading" id="fp4-JR-9zO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Q1L-pT-ciK" secondAttribute="trailing" id="pmq-6w-nKT"/>
-                                    <constraint firstAttribute="trailing" secondItem="BF9-zm-As5" secondAttribute="trailing" id="wgw-cv-5jh"/>
-                                    <constraint firstAttribute="bottom" secondItem="Q1L-pT-ciK" secondAttribute="bottom" id="xDm-wy-SUI"/>
-                                    <constraint firstItem="BF9-zm-As5" firstAttribute="leading" secondItem="4AP-hZ-n0E" secondAttribute="leading" id="zFa-lK-EoU"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="4AP-hZ-n0E" firstAttribute="leading" secondItem="5eV-2g-Pcb" secondAttribute="trailing" id="3w1-zE-67L"/>
-                            <constraint firstItem="5eV-2g-Pcb" firstAttribute="trailing" secondItem="fE4-50-VhE" secondAttribute="trailing" id="4CJ-OH-kvA"/>
-                            <constraint firstItem="fE4-50-VhE" firstAttribute="top" secondItem="5eV-2g-Pcb" secondAttribute="bottom" id="8Of-ZG-iAu"/>
-                            <constraint firstItem="5eV-2g-Pcb" firstAttribute="width" secondItem="4AP-hZ-n0E" secondAttribute="width" id="9gO-22-YSo"/>
-                            <constraint firstItem="5eV-2g-Pcb" firstAttribute="top" secondItem="4AP-hZ-n0E" secondAttribute="top" id="GPc-k9-nat"/>
+                            <constraint firstItem="6Nm-Ad-xVN" firstAttribute="top" secondItem="5eV-2g-Pcb" secondAttribute="bottom" constant="8" id="733-hz-QFD"/>
+                            <constraint firstAttribute="trailing" secondItem="5eV-2g-Pcb" secondAttribute="trailing" id="AUt-e1-rqj"/>
                             <constraint firstItem="6Nm-Ad-xVN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hc6-nm-Oqa"/>
-                            <constraint firstItem="5eV-2g-Pcb" firstAttribute="bottom" secondItem="4AP-hZ-n0E" secondAttribute="bottom" id="KSI-GT-lP2"/>
-                            <constraint firstItem="4AP-hZ-n0E" firstAttribute="trailing" secondItem="FOh-5h-HhI" secondAttribute="trailing" id="Pgd-t9-G56"/>
-                            <constraint firstItem="4AP-hZ-n0E" firstAttribute="leading" secondItem="FOh-5h-HhI" secondAttribute="leading" id="Ufq-Rt-Dro"/>
-                            <constraint firstItem="fE4-50-VhE" firstAttribute="top" secondItem="FOh-5h-HhI" secondAttribute="top" id="XVS-ze-FT5"/>
-                            <constraint firstItem="5eV-2g-Pcb" firstAttribute="height" secondItem="fE4-50-VhE" secondAttribute="height" id="eW3-Ae-cvc"/>
                             <constraint firstItem="5eV-2g-Pcb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="htP-Ih-6t4"/>
-                            <constraint firstItem="fE4-50-VhE" firstAttribute="bottom" secondItem="FOh-5h-HhI" secondAttribute="bottom" id="i8G-Mw-smO"/>
                             <constraint firstItem="6Nm-Ad-xVN" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="kfw-u7-0f9"/>
                             <constraint firstItem="5eV-2g-Pcb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lGF-0Q-AOg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fE4-50-VhE" secondAttribute="bottom" constant="30" id="lV2-22-trE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4AP-hZ-n0E" secondAttribute="trailing" constant="-17" id="lwQ-Nl-l3w"/>
-                            <constraint firstItem="5eV-2g-Pcb" firstAttribute="leading" secondItem="fE4-50-VhE" secondAttribute="leading" id="xmy-Ps-dho"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="RCh-md-yLp" appends="YES" id="PqW-eq-V8P"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="viewBottomLeft" destination="fE4-50-VhE" id="8h1-As-XNf"/>
-                        <outlet property="viewBottomRight" destination="FOh-5h-HhI" id="deo-ER-9HY"/>
                         <outlet property="viewTopLeft" destination="5eV-2g-Pcb" id="YnN-aG-tE3"/>
-                        <outlet property="viewTopRight" destination="4AP-hZ-n0E" id="PQh-QQ-xSC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
