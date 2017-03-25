@@ -9,17 +9,24 @@
 import UIKit
 
 class LineHolderView: UIView {
-
+	
+	@IBInspectable var drawArrow: Bool = false
+	@IBInspectable var addOutline: Bool = false
+	
+	@IBInspectable var lineColor: UIColor = .red
+	@IBInspectable var outlineColor: UIColor = .black
+	
 	private let sin150: CGFloat = 0.5
 	private let cos150: CGFloat = -0.86602540378
+	private var bufferImage: UIImage?
 	
-	var bezierPathLine: UIBezierPath!
-	var bezierPathOutline: UIBezierPath!
-	var bezierPathTriangle: UIBezierPath!
+	private var bezierPathLine: UIBezierPath!
+	private var bezierPathOutline: UIBezierPath!
+	private var bezierPathTriangle: UIBezierPath!
 	
-	var bezierCurvePoints: [CGPoint] = []
+	private var bezierCurvePoints: [CGPoint] = []
 	
-	var startPoint: CGPoint?
+	private var startPoint: CGPoint?
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -32,13 +39,15 @@ class LineHolderView: UIView {
 	}
 	
 	private func addCircle(at point: CGPoint) {
-		let circlePathOutline = UIBezierPath()
-		UIColor.black.setFill()
-		circlePathOutline.addArc(withCenter: point, radius: 3, startAngle: 0, endAngle: CGFloat(M_PI) * 2, clockwise: true)
-		circlePathOutline.fill()
+		if addOutline {
+			let circlePathOutline = UIBezierPath()
+			outlineColor.setFill()
+			circlePathOutline.addArc(withCenter: point, radius: 3, startAngle: 0, endAngle: CGFloat(M_PI) * 2, clockwise: true)
+			circlePathOutline.fill()
+		}
 		
 		let circlePath = UIBezierPath()
-		UIColor.red.setFill()
+		lineColor.setFill()
 		circlePath.addArc(withCenter: point, radius: 2, startAngle: 0, endAngle: CGFloat(M_PI) * 2, clockwise: true)
 		circlePath.fill()
 	}
@@ -68,40 +77,52 @@ class LineHolderView: UIView {
 	}
 	
 	override func draw(_ rect: CGRect) {
-		
+		bufferImage?.draw(in: rect)
+		drawLine()
+	}
+	
+	private func drawLine() {
 		if let point = startPoint {
 			addCircle(at: point)
 		}
 		
 		if let points = getArrowHeadPoints() {
-			addCircle(at: points.point2)
-			addCircle(at: points.point1)
 			addCircle(at: points.point3)
-			let trianglePath = UIBezierPath()
-			UIColor.black.setStroke()
-			trianglePath.lineWidth = 6
-			trianglePath.move(to: points.point3)
-			trianglePath.addLine(to: points.point1)
-			trianglePath.move(to: points.point3)
-			trianglePath.addLine(to: points.point2)
-			trianglePath.stroke()
+			if drawArrow {
+				addCircle(at: points.point2)
+				addCircle(at: points.point1)
+				if addOutline {
+					let trianglePath = UIBezierPath()
+					outlineColor.setStroke()
+					trianglePath.lineWidth = 6
+					trianglePath.move(to: points.point3)
+					trianglePath.addLine(to: points.point1)
+					trianglePath.move(to: points.point3)
+					trianglePath.addLine(to: points.point2)
+					trianglePath.stroke()
+				}
+			}
 		}
 		
-		UIColor.black.setStroke()
-		bezierPathOutline.stroke()
+		if addOutline {
+			outlineColor.setStroke()
+			bezierPathOutline.stroke()
+		}
 		
-		UIColor.red.setStroke()
+		lineColor.setStroke()
 		bezierPathLine.stroke()
 		
-		if let points = getArrowHeadPoints() {
-			let trianglePath = UIBezierPath()
-			UIColor.red.setStroke()
-			trianglePath.lineWidth = 4
-			trianglePath.move(to: points.point3)
-			trianglePath.addLine(to: points.point1)
-			trianglePath.move(to: points.point3)
-			trianglePath.addLine(to: points.point2)
-			trianglePath.stroke()
+		if drawArrow {
+			if let points = getArrowHeadPoints() {
+				let trianglePath = UIBezierPath()
+				lineColor.setStroke()
+				trianglePath.lineWidth = 4
+				trianglePath.move(to: points.point3)
+				trianglePath.addLine(to: points.point1)
+				trianglePath.move(to: points.point3)
+				trianglePath.addLine(to: points.point2)
+				trianglePath.stroke()
+			}
 		}
 	}
 	
@@ -125,12 +146,6 @@ class LineHolderView: UIView {
 		
 		switch sender.state {
 		case .began:
-			
-			bezierPathLine.removeAllPoints()
-			bezierPathOutline.removeAllPoints()
-			bezierPathTriangle.removeAllPoints()
-			
-			bezierCurvePoints.removeAll()
 			bezierCurvePoints.append(point)
 			startPoint = point
 			break;
@@ -164,13 +179,20 @@ class LineHolderView: UIView {
 			break;
 		case .ended:
 			drawLastPath()
+			saveBufferImage()
+			
+			bezierPathLine.removeAllPoints()
+			bezierPathOutline.removeAllPoints()
+			bezierPathTriangle.removeAllPoints()
+			
+			bezierCurvePoints.removeAll()
 			break;
 		default:
 			break;
 		}
 	}
 
-	func getArrowHeadPoints(aspectWidth: CGFloat = 1, aspectHeight: CGFloat = 1) -> (point1: CGPoint, point2: CGPoint, point3: CGPoint)? {
+	private func getArrowHeadPoints(aspectWidth: CGFloat = 1, aspectHeight: CGFloat = 1) -> (point1: CGPoint, point2: CGPoint, point3: CGPoint)? {
 		
 		var points: (CGPoint, CGPoint, CGPoint)? = nil
 		
@@ -218,5 +240,36 @@ class LineHolderView: UIView {
 		}
 		
 		return points
+	}
+	
+	private func saveBufferImage() {
+		UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 1)
+		if bufferImage == nil {
+			let fillPath = UIBezierPath(rect: self.bounds)
+			UIColor.clear.setFill()
+			fillPath.fill()
+		}
+		bufferImage?.draw(at: .zero)
+		drawLine()
+		bufferImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+	}
+	
+	/// Use this method to get the final image. You can also use a background image for your line.
+	///
+	/// - Parameter background: Your background image.
+	/// - Returns: Image drawn with your background image.
+	public func getFinalImage(background: UIImage? = nil) -> UIImage? {
+		if background == nil {
+			return bufferImage
+		}
+		
+		UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 1)
+		background?.draw(in: self.bounds)
+		bufferImage?.draw(at: .zero)
+		bufferImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		return bufferImage
 	}
 }

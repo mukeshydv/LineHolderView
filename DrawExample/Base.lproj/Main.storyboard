@@ -30,6 +30,10 @@
                                     <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLi-LG-RTr" customClass="LineHolderView" customModule="DrawExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="drawArrow" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="addOutline" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -67,7 +71,8 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="viewTopLeft" destination="5eV-2g-Pcb" id="YnN-aG-tE3"/>
+                        <outlet property="backgroundImageView" destination="BOc-bb-tCX" id="HYf-hO-lh0"/>
+                        <outlet property="drawingView" destination="bLi-LG-RTr" id="7J7-H8-URR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
