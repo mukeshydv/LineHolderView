@@ -194,6 +194,7 @@ class LineHolderView: UIView {
 			bezierPathTriangle.removeAllPoints()
 			
 			bezierCurvePoints.removeAll()
+			startPoint = nil
 			
 			delegate?.lineHolderViewDrawingEnd?(self)
 			break;
