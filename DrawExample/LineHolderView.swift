@@ -8,6 +8,11 @@
 
 import UIKit
 
+@objc protocol LineHolderViewDelegate {
+	@objc optional func lineHolderViewDrawingStarted(_ view: LineHolderView)
+	@objc optional func lineHolderViewDrawingEnd(_ view: LineHolderView)
+}
+
 class LineHolderView: UIView {
 	
 	@IBInspectable var drawArrow: Bool = false
@@ -15,6 +20,8 @@ class LineHolderView: UIView {
 	
 	@IBInspectable var lineColor: UIColor = .red
 	@IBInspectable var outlineColor: UIColor = .black
+	
+	weak var delegate: LineHolderViewDelegate?
 	
 	private let sin150: CGFloat = 0.5
 	private let cos150: CGFloat = -0.86602540378
@@ -146,6 +153,7 @@ class LineHolderView: UIView {
 		
 		switch sender.state {
 		case .began:
+			delegate?.lineHolderViewDrawingStarted?(self)
 			bezierCurvePoints.append(point)
 			startPoint = point
 			break;
@@ -186,6 +194,8 @@ class LineHolderView: UIView {
 			bezierPathTriangle.removeAllPoints()
 			
 			bezierCurvePoints.removeAll()
+			
+			delegate?.lineHolderViewDrawingEnd?(self)
 			break;
 		default:
 			break;

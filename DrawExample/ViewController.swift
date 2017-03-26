@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, LineHolderViewDelegate {
 
 	@IBOutlet weak var backgroundImageView: UIImageView!
 	@IBOutlet weak var drawingView: LineHolderView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		drawingView.delegate = self
 	}
 	
 	//MARK:- IBActions
@@ -53,6 +54,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 	
 	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		picker.dismiss(animated: true, completion: nil)
+	}
+	
+	// MARK:- LineHolderViewDelegate
+	func lineHolderViewDrawingEnd(_ view: LineHolderView) {
+		let randomR = arc4random_uniform(256)
+		let randomG = arc4random_uniform(256)
+		let randomB = arc4random_uniform(256)
+		
+		drawingView.lineColor = UIColor(red: CGFloat(randomR) / 255, green: CGFloat(randomG) / 255, blue: CGFloat(randomB) / 255, alpha: 1)
+		drawingView.lineColor = UIColor(red: CGFloat(255 - randomR) / 255, green: CGFloat(255 - randomG) / 255, blue: CGFloat(255 - randomB) / 255, alpha: 1)
 	}
 }
 
