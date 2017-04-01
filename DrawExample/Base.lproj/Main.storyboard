@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-2g-Pcb">
                                 <rect key="frame" x="0.0" y="20" width="375" height="609"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-bb-tCX">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-bb-tCX">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                     </imageView>
                                     <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLi-LG-RTr" customClass="LineHolderView" customModule="DrawExample" customModuleProvider="target">
@@ -50,6 +50,9 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nm-Ad-xVN">
                                 <rect key="frame" x="138" y="637" width="99" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nle-Oq-CrH"/>
+                                </constraints>
                                 <state key="normal" title="Export Images"/>
                                 <connections>
                                     <action selector="clickedButtonExportImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slk-gb-6Vg"/>

@@ -32,7 +32,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 	
 	@IBAction func clickedButtonExportImages(_ sender: AnyObject) {
 		let backgroundImage = backgroundImageView.image
-		saveImageToDocuments(image: drawingView.getFinalImage(background: backgroundImage), imageName: "drawingImage")
+		let image = drawingView.getFinalImage(background: backgroundImage)
+		saveImageToDocuments(image: image, imageName: "drawingImage")
 	}
 	
 	func saveImageToDocuments(image: UIImage?, imageName: String) {
