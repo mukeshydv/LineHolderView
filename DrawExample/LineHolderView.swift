@@ -159,6 +159,7 @@ class LineHolderView: UIView {
 		let point = sender.location(in: self)
 		
         if point.x < 0 || point.x > frame.width || point.y < 0 || point.y > frame.height {
+            
             endDrawing()
             return
         }
