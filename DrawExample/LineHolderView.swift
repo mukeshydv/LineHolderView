@@ -158,6 +158,23 @@ class LineHolderView: UIView {
 			startPoint = point
 			break;
 		case .changed:
+            
+            if bezierCurvePoints.count > 0 {
+                let x1 = bezierCurvePoints.last?.x
+                let y1 = bezierCurvePoints.last?.y
+                let x2 = point.x
+                let y2 = point.y
+                
+                let ex = (x1!-x2)*(x1!-x2)
+                let ey = (y1!-y2)*(y1!-y2)
+                
+                let dist = sqrt(ex + ey)
+                
+                if dist < 3.5 {
+                    return
+                }
+            }
+            
 			bezierCurvePoints.append(point)
 			if bezierCurvePoints.count == 5 {
 				let x1 = bezierCurvePoints[2].x
@@ -284,7 +301,7 @@ class LineHolderView: UIView {
 		return bufferImage
     }
     
-    func clearAllPoints() {
+    func clearDrawing() {
         bufferImage = nil
         setNeedsDisplay()
     }
