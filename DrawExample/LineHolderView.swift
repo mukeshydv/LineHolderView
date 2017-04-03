@@ -21,7 +21,9 @@ class LineHolderView: UIView {
 	@IBInspectable var lineColor: UIColor = .red
 	@IBInspectable var outlineColor: UIColor = .black
 	
-	weak var delegate: LineHolderViewDelegate?
+    weak var delegate: LineHolderViewDelegate?
+    
+    var isDrawEnable = true
 	
 	private let sin150: CGFloat = 0.5
 	private let cos150: CGFloat = -0.86602540378
@@ -149,8 +151,18 @@ class LineHolderView: UIView {
 	}
 	
 	func viewDragged(_ sender: UIPanGestureRecognizer) {
+        
+        if !isDrawEnable {
+            return
+        }
+        
 		let point = sender.location(in: self)
 		
+        if point.x < 0 || point.x > frame.width || point.y < 0 || point.y > frame.height {
+            endDrawing()
+            return
+        }
+        
 		switch sender.state {
 		case .began:
 			delegate?.lineHolderViewDrawingStarted?(self)
@@ -201,25 +213,29 @@ class LineHolderView: UIView {
 				bezierCurvePoints.append(point1)
 				bezierCurvePoints.append(point2)
 			}
-			break;
+			break
 		case .ended:
-			drawLastPath()
-			saveBufferImage()
-			
-			bezierPathLine.removeAllPoints()
-			bezierPathOutline.removeAllPoints()
-			bezierPathTriangle.removeAllPoints()
-			
-			bezierCurvePoints.removeAll()
-			startPoint = nil
-			
-			delegate?.lineHolderViewDrawingEnd?(self)
-			break;
+			endDrawing()
+			break
 		default:
-			break;
+			break
 		}
 	}
 
+    private func endDrawing() {
+        drawLastPath()
+        saveBufferImage()
+        
+        bezierPathLine.removeAllPoints()
+        bezierPathOutline.removeAllPoints()
+        bezierPathTriangle.removeAllPoints()
+        
+        bezierCurvePoints.removeAll()
+        startPoint = nil
+        
+        delegate?.lineHolderViewDrawingEnd?(self)
+    }
+    
 	private func getArrowHeadPoints(aspectWidth: CGFloat = 1, aspectHeight: CGFloat = 1) -> (point1: CGPoint, point2: CGPoint, point3: CGPoint)? {
 		
 		var points: (CGPoint, CGPoint, CGPoint)? = nil
