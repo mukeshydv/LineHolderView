@@ -282,5 +282,10 @@ class LineHolderView: UIView {
 		UIGraphicsEndImageContext()
 		
 		return bufferImage
-	}
+    }
+    
+    func clearAllPoints() {
+        bufferImage = nil
+        setNeedsDisplay()
+    }
 }
