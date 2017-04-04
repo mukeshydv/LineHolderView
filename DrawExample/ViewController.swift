@@ -9,59 +9,59 @@
 import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, LineHolderViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-
-	@IBOutlet weak var backgroundImageView: UIImageView!
-	@IBOutlet weak var drawingView: LineHolderView!
-	
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var drawingView: LineHolderView!
+    
     @IBOutlet weak var viewLineColor: UIView!
     @IBOutlet weak var viewOutlineColor: UIView!
     
     private var wrapperView: UIView!
     private var selectedView: UIView!
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		drawingView.delegate = self
-	}
-	
-	//MARK:- IBActions
-	@IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-		let imagePicker = UIImagePickerController()
-		imagePicker.sourceType = .photoLibrary
-		if UIImagePickerController.isSourceTypeAvailable(.camera) {
-			imagePicker.sourceType = .camera
-		}
-		imagePicker.allowsEditing = true
-		imagePicker.delegate = self
-		present(imagePicker, animated: true, completion: nil)
-	}
-	
-	@IBAction func clickedButtonExportImages(_ sender: AnyObject) {
-		let backgroundImage = backgroundImageView.image
-		let image = drawingView.getFinalImage(background: backgroundImage)
-		saveImageToDocuments(image: image, imageName: "drawingImage")
-	}
-	
-	func saveImageToDocuments(image: UIImage?, imageName: String) {
-		if image != nil {
-			UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-		}
-	}
-	
-	//MARK:- UIImagePickerControllerDelegate
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		
-		let selectedImage = info[UIImagePickerControllerEditedImage] as! UIImage?
-		if let image = selectedImage {
-			backgroundImageView.image = image
-		}
-		
-		picker.dismiss(animated: true, completion: nil)
-	}
-	
-	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-		picker.dismiss(animated: true, completion: nil)
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        drawingView.delegate = self
+    }
+    
+    //MARK:- IBActions
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        }
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickedButtonExportImages(_ sender: AnyObject) {
+        let backgroundImage = backgroundImageView.image
+        let image = drawingView.getFinalImage(background: backgroundImage)
+        saveImageToDocuments(image: image, imageName: "drawingImage")
+    }
+    
+    func saveImageToDocuments(image: UIImage?, imageName: String) {
+        if image != nil {
+            UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+        }
+    }
+    
+    //MARK:- UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let selectedImage = info[UIImagePickerControllerEditedImage] as! UIImage?
+        if let image = selectedImage {
+            backgroundImageView.image = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func outlineSegmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -70,7 +70,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             drawingView.addOutline = false
         }
     }
-	
+    
     @IBAction func arrowSegmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             drawingView.drawArrow = true
