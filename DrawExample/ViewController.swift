@@ -24,69 +24,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         drawingView.delegate = self
     }
     
-    //MARK:- IBActions
-    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
-        }
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @IBAction func clickedButtonExportImages(_ sender: AnyObject) {
-        let backgroundImage = backgroundImageView.image
-        let image = drawingView.getFinalImage(background: backgroundImage)
-        saveImageToDocuments(image: image, imageName: "drawingImage")
-    }
-    
-    func saveImageToDocuments(image: UIImage?, imageName: String) {
+    private func saveImageToDocuments(image: UIImage?, imageName: String) {
         if image != nil {
             UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
         }
-    }
-    
-    //MARK:- UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        let selectedImage = info[UIImagePickerControllerEditedImage] as! UIImage?
-        if let image = selectedImage {
-            backgroundImageView.image = image
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func outlineSegmentChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            drawingView.addOutline = true
-        } else {
-            drawingView.addOutline = false
-        }
-    }
-    
-    @IBAction func arrowSegmentChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            drawingView.drawArrow = true
-        } else {
-            drawingView.drawArrow = false
-        }
-    }
-    
-    @IBAction func clickedBtnLineColor(_ sender: Any) {
-        selectedView = viewLineColor
-        showColorPicker(color: selectedView.backgroundColor)
-    }
-    
-    @IBAction func clickedBtnOutlineColor(_ sender: Any) {
-        selectedView = viewOutlineColor
-        showColorPicker(color: selectedView.backgroundColor)
     }
     
     // MARK:- UIPickerView
@@ -187,6 +128,69 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let color = UIColor(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: 1)
         
         selectedView.backgroundColor = color
+    }
+    
+    //MARK:- UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let selectedImage = info[UIImagePickerControllerEditedImage] as! UIImage?
+        if let image = selectedImage {
+            backgroundImageView.image = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK:- IBActions
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        }
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickedBtnClearDrawing(_ sender: Any) {
+        drawingView.clearDrawing()
+    }
+    
+    @IBAction func clickedButtonExportImages(_ sender: AnyObject) {
+        let backgroundImage = backgroundImageView.image
+        let image = drawingView.getFinalImage(background: backgroundImage)
+        saveImageToDocuments(image: image, imageName: "drawingImage")
+    }
+    
+    @IBAction func outlineSegmentChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            drawingView.addOutline = true
+        } else {
+            drawingView.addOutline = false
+        }
+    }
+    
+    @IBAction func arrowSegmentChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            drawingView.drawArrow = true
+        } else {
+            drawingView.drawArrow = false
+        }
+    }
+    
+    @IBAction func clickedBtnLineColor(_ sender: Any) {
+        selectedView = viewLineColor
+        showColorPicker(color: selectedView.backgroundColor)
+    }
+    
+    @IBAction func clickedBtnOutlineColor(_ sender: Any) {
+        selectedView = viewOutlineColor
+        showColorPicker(color: selectedView.backgroundColor)
     }
 }
 

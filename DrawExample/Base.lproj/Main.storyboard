@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -226,7 +227,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nm-Ad-xVN">
-                                <rect key="frame" x="138" y="637" width="99" height="30"/>
+                                <rect key="frame" x="191.5" y="637" width="167.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nle-Oq-CrH"/>
                                 </constraints>
@@ -235,19 +236,33 @@
                                     <action selector="clickedButtonExportImages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slk-gb-6Vg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRi-60-vDw">
+                                <rect key="frame" x="16" y="637" width="167.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Gfb-N1-EHE"/>
+                                </constraints>
+                                <state key="normal" title="Clear Drawing"/>
+                                <connections>
+                                    <action selector="clickedBtnClearDrawing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Agz-VP-4iG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Nm-Ad-xVN" secondAttribute="trailing" id="1Cx-Vj-fwK"/>
                             <constraint firstItem="5eV-2g-Pcb" firstAttribute="top" secondItem="tbn-KQ-wjE" secondAttribute="bottom" id="3ka-r6-T1E"/>
                             <constraint firstItem="6Nm-Ad-xVN" firstAttribute="top" secondItem="5eV-2g-Pcb" secondAttribute="bottom" constant="8" id="733-hz-QFD"/>
                             <constraint firstAttribute="trailing" secondItem="5eV-2g-Pcb" secondAttribute="trailing" id="AUt-e1-rqj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SRi-60-vDw" secondAttribute="bottom" id="Beh-3w-vPg"/>
                             <constraint firstItem="tbn-KQ-wjE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="G96-lO-97g"/>
-                            <constraint firstItem="6Nm-Ad-xVN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hc6-nm-Oqa"/>
+                            <constraint firstItem="6Nm-Ad-xVN" firstAttribute="width" secondItem="SRi-60-vDw" secondAttribute="width" id="HYo-ZW-Rzz"/>
                             <constraint firstItem="tbn-KQ-wjE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="L4z-Q0-zmE"/>
+                            <constraint firstItem="SRi-60-vDw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="TJv-on-3wI"/>
                             <constraint firstItem="5eV-2g-Pcb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="htP-Ih-6t4"/>
                             <constraint firstItem="6Nm-Ad-xVN" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="kfw-u7-0f9"/>
                             <constraint firstAttribute="trailing" secondItem="tbn-KQ-wjE" secondAttribute="trailing" id="lGE-X9-hyu"/>
+                            <constraint firstItem="6Nm-Ad-xVN" firstAttribute="leading" secondItem="SRi-60-vDw" secondAttribute="trailing" constant="8" id="zlt-gT-MRa"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="RCh-md-yLp" appends="YES" id="PqW-eq-V8P"/>
