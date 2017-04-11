@@ -257,6 +257,7 @@ class LineHolderView: UIView {
             
             let normal = sqrt(dx*dx + dy*dy)
             
+            // Convert into unit vectors
             var udx = dx / normal
             var udy = dy / normal
             
@@ -265,12 +266,15 @@ class LineHolderView: UIView {
                 udy = 0
             }
             
+            // Rotate clockwise to get first point
             let ax = (udx * cos150) - (udy * sin150)
             let ay = (udx * sin150) + (udy * cos150)
             
+            // Rotate anticlockwise to get second point
             let bx = (udx * cos150) + (udy * sin150)
             let by = (-1 * udx * sin150) + (udy * cos150)
             
+            // Scale 20 points and then translate to end point for both points
             let ax0 = end.x + 20 * ax
             let ay0 = end.y + 20 * ay
             
@@ -288,7 +292,7 @@ class LineHolderView: UIView {
     }
     
     private func saveBufferImage() {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 1)
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         if bufferImage == nil {
             let fillPath = UIBezierPath(rect: self.bounds)
             UIColor.clear.setFill()
@@ -309,7 +313,7 @@ class LineHolderView: UIView {
             return bufferImage
         }
         
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 1)
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
         background?.draw(in: self.bounds)
         bufferImage?.draw(at: .zero)
         bufferImage = UIGraphicsGetImageFromCurrentImageContext()
