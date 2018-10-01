@@ -6,6 +6,8 @@
 	<string>Allow to use camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow to use photo library</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Allow to use photo library</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

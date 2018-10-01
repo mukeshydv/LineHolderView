@@ -51,13 +51,13 @@ class LineHolderView: UIView {
         if addOutline {
             let circlePathOutline = UIBezierPath()
             outlineColor.setFill()
-            circlePathOutline.addArc(withCenter: point, radius: 3, startAngle: 0, endAngle: CGFloat(M_PI) * 2, clockwise: true)
+            circlePathOutline.addArc(withCenter: point, radius: 3, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
             circlePathOutline.fill()
         }
         
         let circlePath = UIBezierPath()
         lineColor.setFill()
-        circlePath.addArc(withCenter: point, radius: 2, startAngle: 0, endAngle: CGFloat(M_PI) * 2, clockwise: true)
+        circlePath.addArc(withCenter: point, radius: 2, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
         circlePath.fill()
     }
     
@@ -150,7 +150,7 @@ class LineHolderView: UIView {
         addGestureRecognizer(panGesture)
     }
     
-    func viewDragged(_ sender: UIPanGestureRecognizer) {
+    @objc func viewDragged(_ sender: UIPanGestureRecognizer) {
         
         if !isDrawEnable {
             return

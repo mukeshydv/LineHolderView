@@ -131,9 +131,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     //MARK:- UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        let selectedImage = info[UIImagePickerControllerEditedImage] as! UIImage?
+        let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage?
         if let image = selectedImage {
             backgroundImageView.image = image
         }
@@ -193,4 +193,3 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         showColorPicker(color: selectedView.backgroundColor)
     }
 }
-
