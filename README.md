@@ -1,5 +1,5 @@
 # LineHolderView
-A Simple View in Swift 3 to add Free hand smooth drawing to your iOS Application.
+A Simple View in Swift to add Free hand smooth drawing to your iOS Application.
 
 ## Freehand Drawing
 
