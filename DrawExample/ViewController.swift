@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LineHolderView
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, LineHolderViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     

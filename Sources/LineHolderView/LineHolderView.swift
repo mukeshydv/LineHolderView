@@ -8,22 +8,27 @@
 
 import UIKit
 
-@objc protocol LineHolderViewDelegate {
-    @objc optional func lineHolderViewDrawingStarted(_ view: LineHolderView)
-    @objc optional func lineHolderViewDrawingEnd(_ view: LineHolderView)
+public protocol LineHolderViewDelegate: AnyObject {
+    func lineHolderViewDrawingStarted(_ view: LineHolderView)
+    func lineHolderViewDrawingEnd(_ view: LineHolderView)
 }
 
-class LineHolderView: UIView {
+public extension LineHolderViewDelegate {
+    func lineHolderViewDrawingStarted(_ view: LineHolderView) { }
+    func lineHolderViewDrawingEnd(_ view: LineHolderView) { }
+}
+
+public class LineHolderView: UIView {
     
-    @IBInspectable var drawArrow: Bool = false
-    @IBInspectable var addOutline: Bool = false
+    @IBInspectable public var drawArrow: Bool = false
+    @IBInspectable public var addOutline: Bool = false
     
-    @IBInspectable var lineColor: UIColor = .red
-    @IBInspectable var outlineColor: UIColor = .black
+    @IBInspectable public var lineColor: UIColor = .red
+    @IBInspectable public var outlineColor: UIColor = .black
     
-    weak var delegate: LineHolderViewDelegate?
+    public weak var delegate: LineHolderViewDelegate?
     
-    var isDrawEnable = true
+    public var isDrawEnable = true
     
     private let sin150: CGFloat = 0.5
     private let cos150: CGFloat = -0.86602540378
@@ -85,7 +90,7 @@ class LineHolderView: UIView {
         }
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         bufferImage?.draw(in: rect)
         drawLine()
     }
@@ -166,7 +171,7 @@ class LineHolderView: UIView {
         
         switch sender.state {
         case .began:
-            delegate?.lineHolderViewDrawingStarted?(self)
+            delegate?.lineHolderViewDrawingStarted(self)
             bezierCurvePoints.append(point)
             startPoint = point
             break;
@@ -234,7 +239,7 @@ class LineHolderView: UIView {
         bezierCurvePoints.removeAll()
         startPoint = nil
         
-        delegate?.lineHolderViewDrawingEnd?(self)
+        delegate?.lineHolderViewDrawingEnd(self)
     }
     
     private func getArrowHeadPoints(aspectWidth: CGFloat = 1, aspectHeight: CGFloat = 1) -> (point1: CGPoint, point2: CGPoint, point3: CGPoint)? {
@@ -322,7 +327,7 @@ class LineHolderView: UIView {
         return bufferImage
     }
     
-    func clearDrawing() {
+    public func clearDrawing() {
         bufferImage = nil
         setNeedsDisplay()
     }

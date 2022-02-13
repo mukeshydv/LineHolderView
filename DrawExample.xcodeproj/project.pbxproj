@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,7 @@
 		8B21AF581DF7292500B22940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B21AF561DF7292500B22940 /* Main.storyboard */; };
 		8B21AF5A1DF7292500B22940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B21AF591DF7292500B22940 /* Assets.xcassets */; };
 		8B21AF5D1DF7292500B22940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B21AF5B1DF7292500B22940 /* LaunchScreen.storyboard */; };
-		8B21AF651DF73C8700B22940 /* LineHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21AF641DF73C8700B22940 /* LineHolderView.swift */; };
+		8B37F15D27B955D400D7EE66 /* LineHolderView in Frameworks */ = {isa = PBXBuildFile; productRef = 8B37F15C27B955D400D7EE66 /* LineHolderView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		8B21AF591DF7292500B22940 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B21AF5C1DF7292500B22940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B21AF5E1DF7292500B22940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B21AF641DF73C8700B22940 /* LineHolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineHolderView.swift; sourceTree = "<group>"; };
+		8B37F15A27B955B500D7EE66 /* LineHolderView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LineHolderView; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B37F15D27B955D400D7EE66 /* LineHolderView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +41,10 @@
 		8B21AF461DF7292500B22940 = {
 			isa = PBXGroup;
 			children = (
+				8B37F15627B9552D00D7EE66 /* Packages */,
 				8B21AF511DF7292500B22940 /* DrawExample */,
 				8B21AF501DF7292500B22940 /* Products */,
+				8B37F15B27B955D400D7EE66 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,9 +65,23 @@
 				8B21AF591DF7292500B22940 /* Assets.xcassets */,
 				8B21AF5B1DF7292500B22940 /* LaunchScreen.storyboard */,
 				8B21AF5E1DF7292500B22940 /* Info.plist */,
-				8B21AF641DF73C8700B22940 /* LineHolderView.swift */,
 			);
 			path = DrawExample;
+			sourceTree = "<group>";
+		};
+		8B37F15627B9552D00D7EE66 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				8B37F15A27B955B500D7EE66 /* LineHolderView */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		8B37F15B27B955D400D7EE66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +100,9 @@
 			dependencies = (
 			);
 			name = DrawExample;
+			packageProductDependencies = (
+				8B37F15C27B955D400D7EE66 /* LineHolderView */,
+			);
 			productName = DrawExample;
 			productReference = 8B21AF4F1DF7292500B22940 /* DrawExample.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +130,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -142,7 +163,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B21AF551DF7292500B22940 /* ViewController.swift in Sources */,
-				8B21AF651DF73C8700B22940 /* LineHolderView.swift in Sources */,
 				8B21AF531DF7292500B22940 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,7 +294,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -286,8 +307,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y5WJ4B7E4Z;
 				INFOPLIST_FILE = DrawExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.innovationm.DrawExample;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mukeshydv.DrawExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "381219ce-7450-42f4-b962-c7613aaed9d1";
 				PROVISIONING_PROFILE_SPECIFIER = "Global Dev Profile";
@@ -303,8 +327,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Y5WJ4B7E4Z;
 				INFOPLIST_FILE = DrawExample/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.innovationm.DrawExample;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mukeshydv.DrawExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b0e283ff-83a9-4c80-b367-83061dfb5059";
 				PROVISIONING_PROFILE_SPECIFIER = Global_AdHoc_Distribution_Profile;
@@ -335,6 +362,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B37F15C27B955D400D7EE66 /* LineHolderView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LineHolderView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8B21AF471DF7292500B22940 /* Project object */;
 }
